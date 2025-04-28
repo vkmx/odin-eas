@@ -15,8 +15,18 @@ for( let i = 0; i < gridSize; i++ ){
 
 container.appendChild( gridItems );
 
+function setOpacity(element) {
+    let currentOpacity = element.style.opacity;
+
+    if( currentOpacity === '1' ) return;
+
+    let opacity = Number( currentOpacity ) + 0.1;
+    element.style.opacity = opacity;
+}
+
 container.addEventListener( 'mouseover', ( event ) => {
     const target = event.target;
 
     target.style.backgroundColor = 'black';
+    setOpacity(target);
 });
