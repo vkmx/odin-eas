@@ -24,9 +24,27 @@ function setOpacity(element) {
     element.style.opacity = opacity;
 }
 
+function getRandomRGBColor(){
+
+    let r = Math.ceil( Math.random() * 255 );
+    let g = Math.ceil( Math.random() * 255 );
+    let b = Math.ceil( Math.random() * 255 );
+
+    return `rgb(${r} ${g} ${b})`;
+}
+
+function setColor( element ){
+
+    let currentBackgroundColor = element.style.backgroundColor;
+
+    if( currentBackgroundColor !== '' ) return;
+
+    element.style.backgroundColor = getRandomRGBColor();
+}
+
 container.addEventListener( 'mouseover', ( event ) => {
     const target = event.target;
 
-    target.style.backgroundColor = 'black';
-    setOpacity(target);
+    setColor( target );
+    setOpacity( target );
 });
