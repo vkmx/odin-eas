@@ -7,6 +7,9 @@
     width: 500px;
     text-align: center;
     margin: 50px auto;
+    background-color: #9b0a0a;
+    border-radius: 50px;
+    padding: 25px;
 }
 
 .grid {
@@ -14,6 +17,7 @@
     flex-wrap: wrap;
     width: 400px;
     margin: 50px auto;
+    background-color: #fff;
 }
 
 .grid-item {
