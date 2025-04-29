@@ -1,19 +1,8 @@
 let gridLength = 16;
-let gridSize = gridLength * gridLength;
 let container = document.querySelector('.grid');
-let gridItems = document.createDocumentFragment();
-let itemSize = `${100/gridLength}%`;
+let button = document.querySelector('.container button');
 
-for( let i = 0; i < gridSize; i++ ){
-    let item = document.createElement('div');
-    item.className = 'grid-item';
-    item.style.minWidth = itemSize;
-    item.style.minHeight = itemSize;
-
-    gridItems.appendChild( item );
-}
-
-container.appendChild( gridItems );
+createGrid();
 
 function setOpacity(element) {
     let currentOpacity = element.style.opacity;
@@ -42,9 +31,42 @@ function setColor( element ){
     element.style.backgroundColor = getRandomRGBColor();
 }
 
+function createGrid(){
+
+    let gridSize    = gridLength * gridLength;
+    let gridItems   = document.createDocumentFragment();
+    let itemSize    = `${200/gridLength}px`;
+
+    container.innerHTML = '';
+
+    for( let i = 0; i < gridSize; i++ ){
+        let item = document.createElement('div');
+        item.className = 'grid-item';
+        item.style.padding = itemSize;
+
+        gridItems.appendChild( item );
+    }
+
+    container.appendChild( gridItems );
+
+}
+
 container.addEventListener( 'mouseover', ( event ) => {
     const target = event.target;
 
     setColor( target );
     setOpacity( target );
+});
+
+button.addEventListener( 'click', (event) => {
+
+    let newGridLength = prompt( 'Enter grid size' );
+
+    if( newGridLength <= 100 ){
+        gridLength = newGridLength;
+        createGrid();
+    } else {
+        alert ( 'Grid size cannot be more than 50' );
+    }
+
 });
